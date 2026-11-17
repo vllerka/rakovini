@@ -17,7 +17,28 @@
             <a href="works.html">Готовые работы</a>
             <a href="#about">О нас</a>
         </nav>
+        <button class="mobile-menu-toggle" type="button" aria-controls="mobile-menu" aria-expanded="false" aria-label="Открыть меню">
+            <span class="mobile-menu-toggle__line"></span>
+            <span class="mobile-menu-toggle__line"></span>
+            <span class="mobile-menu-toggle__line"></span>
+        </button>
     </header>
+    <nav class="mobile-menu" id="mobile-menu" aria-label="Мобильная навигация" hidden>
+        <div class="mobile-menu__links">
+            <a href="index.html">Главная</a>
+            <a href="#forms">Формы раковин</a>
+            <a href="works.html">Готовые работы</a>
+            <a href="#about">О нас</a>
+        </div>
+        <div class="mobile-menu__contact">
+            <p>Нужна консультация? Позвоните или напишите</p>
+            <a class="mobile-menu__phone" href="tel:+79226806614">+7 (922) 680-66-14</a>
+            <div class="mobile-menu__socials">
+                <a href="https://t.me/maratusachev">Telegram</a>
+                <a href="https://max.ru/u/f9LHodD0cOLrPdPLi6p1ySVcDOKdnUDTAjddglqmSjcLEAeSOEm218_a-qA">MAX</a>
+            </div>
+        </div>
+    </nav>
 
     <main>
         <section class="hero">
@@ -376,6 +397,34 @@
 
             card.querySelector(".form-card__arrow--previous").addEventListener("click", () => showImage(-1));
             card.querySelector(".form-card__arrow--next").addEventListener("click", () => showImage(1));
+        });
+    </script>
+    <script>
+        const mobileMenuToggle = document.querySelector(".mobile-menu-toggle");
+        const mobileMenu = document.querySelector("#mobile-menu");
+
+        function closeMobileMenu() {
+            mobileMenu.hidden = true;
+            mobileMenuToggle.setAttribute("aria-expanded", "false");
+            mobileMenuToggle.setAttribute("aria-label", "Открыть меню");
+        }
+
+        mobileMenuToggle.addEventListener("click", function () {
+            const isOpen = mobileMenuToggle.getAttribute("aria-expanded") === "true";
+            mobileMenu.hidden = isOpen;
+            mobileMenuToggle.setAttribute("aria-expanded", String(!isOpen));
+            mobileMenuToggle.setAttribute("aria-label", isOpen ? "Открыть меню" : "Закрыть меню");
+        });
+
+        mobileMenu.querySelectorAll("a").forEach(function (link) {
+            link.addEventListener("click", closeMobileMenu);
+        });
+
+        document.addEventListener("keydown", function (event) {
+            if (event.key === "Escape" && !mobileMenu.hidden) {
+                closeMobileMenu();
+                mobileMenuToggle.focus();
+            }
         });
     </script>
 </body>
