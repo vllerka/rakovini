@@ -1164,8 +1164,8 @@ button:focus-visible,
 
 .info-about__closing {
     display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: clamp(22px, 4vw, 58px);
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
     margin-top: 30px;
     padding-left: 20px;
     border-left: 3px solid var(--color-accent, #42c4c6);
