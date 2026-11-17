@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body class="works-page">
+    <div class="scroll-progress" aria-hidden="true"><span class="scroll-progress__fill"></span></div>
     <header class="header">
         <a class="site-logo-link" href="index.html" aria-label="На главную страницу">
             <img class="site-logo" src="img/logo/logo-circle.png" alt="Форма камня — логотип">
@@ -35,6 +36,7 @@
             <div class="mobile-menu__socials">
                 <a href="https://t.me/maratusachev">Telegram</a>
                 <a href="https://max.ru/u/f9LHodD0cOLrPdPLi6p1ySVcDOKdnUDTAjddglqmSjcLEAeSOEm218_a-qA">MAX</a>
+                <a href="https://wa.me/qr/Z5MLQCVCQ3GNJ1">WhatsApp</a>
             </div>
         </div>
     </nav>
@@ -626,6 +628,22 @@
                 mobileMenuToggle.focus();
             }
         });
+    </script>
+    <script>
+        const scrollProgressFill = document.querySelector(".scroll-progress__fill");
+
+        function updateScrollProgress() {
+            const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollProgress = scrollableHeight > 0
+                ? Math.min(1, Math.max(0, window.scrollY / scrollableHeight))
+                : 0;
+
+            scrollProgressFill.style.transform = `scaleX(${scrollProgress})`;
+        }
+
+        window.addEventListener("scroll", updateScrollProgress, { passive: true });
+        window.addEventListener("resize", updateScrollProgress);
+        updateScrollProgress();
     </script>
 </body>
 </html>
