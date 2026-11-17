@@ -1632,3 +1632,43 @@ button:focus-visible,
         height: 44px;
     }
 }
+
+/* Compact mobile header: keep the logo clear and all navigation choices on one line. */
+@media (max-width: 680px) {
+    .header {
+        min-height: 0;
+        padding: 12px 5% 14px;
+        gap: 10px;
+    }
+
+    .site-logo-link {
+        flex-basis: 176px;
+        width: min(176px, 64vw);
+    }
+
+    .site-logo {
+        height: 34px;
+    }
+
+    .header .navigation {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr) minmax(0, 0.55fr);
+        width: 100%;
+        order: 2;
+        gap: 8px;
+        padding-top: 10px;
+    }
+
+    .header .navigation a {
+        min-width: 0;
+        min-height: 44px;
+        padding: 0 7px;
+        font-size: clamp(11px, 3.2vw, 13px);
+        letter-spacing: -0.015em;
+        white-space: nowrap;
+    }
+
+    .works-page .header .navigation {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
