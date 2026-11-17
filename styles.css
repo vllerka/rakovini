@@ -1604,3 +1604,31 @@ button:focus-visible,
         padding: 0 14px;
     }
 }
+
+/* Mobile layout fix for the category carousel cards. The centered final pair is for three-column screens only. */
+@media (max-width: 900px) {
+    .form-grid > .form-card:nth-child(3n + 1):nth-last-child(2),
+    .form-grid > .form-card:nth-child(3n + 2):last-child {
+        grid-column: auto;
+    }
+}
+
+@media (max-width: 680px) {
+    .form-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 34px;
+    }
+
+    .form-grid > .form-card {
+        width: 100%;
+    }
+
+    .form-card h3 {
+        min-height: 0;
+    }
+
+    .form-card__arrow {
+        width: 44px;
+        height: 44px;
+    }
+}
