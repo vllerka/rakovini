@@ -1228,7 +1228,7 @@ button:focus-visible,
 }
 
 .info-process__duration {
-    margin: -12px 0 10px;
+    margin: 0 0 10px;
     color: var(--color-accent-dark, #087b83);
     font-size: 14px;
     font-weight: 700;
@@ -1359,7 +1359,7 @@ button:focus-visible,
 
     .info-stat {
         display: grid;
-        grid-template-columns: minmax(76px, 0.3fr) minmax(0, 1fr);
+        grid-template-columns: minmax(max-content, 0.42fr) minmax(0, 1fr);
         align-items: center;
         gap: 12px;
         padding: 16px 4px;
